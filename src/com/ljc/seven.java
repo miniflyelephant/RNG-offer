@@ -18,52 +18,33 @@ public class seven {
           TreeNode left;
           TreeNode right;
          TreeNode(int x) { val = x; }
-      }
-
-
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     *     int val;
-     *     TreeNode left;
-     *     TreeNode right;
-     *     TreeNode(int x) { val = x; }
-     * }
-     */
-    class Solution {
-        public TreeNode buildTree(int[] preorder, int[] inorder) {
-            if (preorder == null || preorder.length == 0) {
-                return null;
-            }
-            Map<Integer, Integer> indexMap = new HashMap<Integer, Integer>();
-            int length = preorder.length;
-            for (int i = 0; i < length; i++) {
-                indexMap.put(inorder[i], i);
-            }
-            TreeNode root = buildTree(preorder, 0, length - 1, inorder, 0, length - 1, indexMap);
-            return root;
-        }
-
-        public TreeNode buildTree(int[] preorder, int preorderStart, int preorderEnd, int[] inorder, int inorderStart, int inorderEnd, Map<Integer, Integer> indexMap) {
-            if (preorderStart > preorderEnd) {
-                return null;
-            }
-            int rootVal = preorder[preorderStart];
-            TreeNode root = new TreeNode(rootVal);
-            if (preorderStart == preorderEnd) {
-                return root;
-            } else {
-                int rootIndex = indexMap.get(rootVal);
-                int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
-                TreeNode leftSubtree = buildTree(preorder, preorderStart + 1, preorderStart + leftNodes, inorder, inorderStart, rootIndex - 1, indexMap);
-                TreeNode rightSubtree = buildTree(preorder, preorderEnd - rightNodes + 1, preorderEnd, inorder, rootIndex + 1, inorderEnd, indexMap);
-                root.left = leftSubtree;
-                root.right = rightSubtree;
-                return root;
-            }
-        }
     }
 
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        Map<Integer, Integer> index=new HashMap<Integer, Integer>();
+        if(preorder.length==0||preorder==null){
+            return null;
+        }
+        for(int i=0;i<inorder.length;i++){
+            index.put(inorder[i],i);
+        }
+        TreeNode root= tr(preorder,0,preorder.length-1,inorder,0,inorder.length-1,index);
+        return root;
+    }
 
+    public  TreeNode tr(int[] preorder,int prestart,int preend,int[] inorder,int instart,int inend,Map<Integer,Integer> index){
+        if(prestart>preend){
+            return null;
+        }
+        int now=index.get(preorder[prestart]);
+        TreeNode root=new TreeNode(preorder[prestart]);
+
+        int
+        root.left=tr(preorder,prestart+1,prestart+now-instart,inorder,,now-1);
+        root.right=tr(preorder,prestart+now+1,);
+
+
+
+    }
 
 }
