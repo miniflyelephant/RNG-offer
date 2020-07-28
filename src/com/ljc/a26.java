@@ -29,19 +29,11 @@ B是A的子结构， 即 A中有出现和B相同的结构和节点值。
         输出：true
 */
 
-public class a26 {
-      public class TreeNode {
-          int val;
-          TreeNode left;
-          TreeNode right;
+import com.type.TreeNode;
 
-          TreeNode(int x) {
-              val = x;
-          }
-      }
+public class a26 {
     public boolean isSubStructure(TreeNode A, TreeNode B) {
         boolean check=true;
-        checkTree
 
 
 
@@ -51,7 +43,7 @@ public class a26 {
           if (B.left==null&&B.right==null){
               return true;
           }
-
+        return true;
     }
 
 }

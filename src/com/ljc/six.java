@@ -1,14 +1,11 @@
 package com.ljc;
 
+import com.type.ListNode;
+
 import java.util.Stack;
 
 public class six {
 
-      public class ListNode {
-          int val;
-          ListNode next;
-          ListNode(int x) { val = x; }
-      }
 
     public int[] reversePrint(ListNode head) {
           int i=0;
